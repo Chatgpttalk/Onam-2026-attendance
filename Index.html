@@ -1,2 +1,145 @@
-the document type and html tag.
-the head contents including the page title.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onam Celebration 2026 - Attendance</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 25px;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .attendance {
+      margin-top: 10px;
+    }
+
+    .attendance label {
+      display: inline-block;
+      margin-right: 25px;
+      font-weight: normal;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 13px;
+      border: none;
+      border-radius: 6px;
+      background: #198754;
+      color: white;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #146c43;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>🌼 Onam Celebration 2026 🌼</h1>
+
+    <form id="attendanceForm">
+
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="department">Department</label>
+      <select id="department" name="department" required>
+        <option value="">Select Department</option>
+        <option value="Finance">Finance</option>
+        <option value="OCD">OCD</option>
+        <option value="IT">IT</option>
+        <option value="Others">Others</option>
+      </select>
+
+      <label>Will you attend the Onam Celebration?</label>
+
+      <div class="attendance">
+        <label>
+          <input type="radio" name="attendance" value="Yes" required>
+          Yes
+        </label>
+
+        <label>
+          <input type="radio" name="attendance" value="No" required>
+          No
+        </label>
+      </div>
+
+      <button type="submit">Submit Attendance</button>
+
+      <div id="message"></div>
+
+    </form>
+
+  </div>
+
+  <script>
+    document.getElementById("attendanceForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const department = document.getElementById("department").value;
+      const attendance = document.querySelector('input[name="attendance"]:checked').value;
+
+      document.getElementById("message").textContent =
+        "Thank you, " + name + "! Your response has been recorded.";
+
+      console.log({
+        name: name,
+        department: department,
+        attendance: attendance
+      });
+
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
